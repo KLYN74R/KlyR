@@ -5,7 +5,7 @@ edition = "2021"
 description = "Rust implementation of KLYNTAR core"
 readme = "README.md"
 repository="https://github.com/KLYN74R/KlyR"
-lisence="MIT"
+lisence="Apache-2.0"
 authors = ["Vlad Chernenko vladchernenko@protonmail.com"]
 keywords = ["crypto", "exolorer", "klyntar"]
 
@@ -28,3 +28,23 @@ default = []
 
 
 #[[test]]
+
+
+
+############################## OPTIMIZATION STUFF ##############################
+
+# +Use RUSTFLAGS="-C target-cpu=native"
+
+[profile.release]
+lto=true
+codegen-units=1
+incremental=true
+strip=true
+
+[profile.release.package."*"]
+#lto=true
+codegen-units=1
+incremental=true
+strip=true
+
+# No build scripts, proc macros, and their dependencies,so no more options need
